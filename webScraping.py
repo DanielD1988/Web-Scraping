@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import csv
-for i in range(1,12): 
+for i in range(1,12):# loop through pages of site
     src = requests.get('https://www.adverts.ie/for-sale/q_nes+games/page-'+str(i)).text
     soup = BeautifulSoup(src,'lxml')
     
@@ -9,7 +9,7 @@ for i in range(1,12):
     csv_writer = csv.writer(csv_file)
     csv_writer.writerow(['title','price','location'])
 
-    for t in soup.find_all('div',class_='item-details'):
+    for t in soup.find_all('div',class_='item-details'):#Parse html to find title,price and location
         title = t.find('div',class_='title').a.text
         print(title)
         price = t.find('div',class_='price').a.text
