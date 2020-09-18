@@ -5,7 +5,7 @@ for i in range(1,12):# loop through pages of site
     src = requests.get('https://www.adverts.ie/for-sale/q_nes+games/page-'+str(i)).text
     soup = BeautifulSoup(src,'lxml')
     
-    csv_file = open('NesDescriptionScrap.csv', 'a')#write results to this file
+    csv_file = open('NesDescriptionScrap.csv', 'a')#Append results to this file
     csv_writer = csv.writer(csv_file)
     csv_writer.writerow(['title','price','location'])
 
